@@ -16,7 +16,7 @@ class Gameplay: CCNode {
     weak var scoreLabel:CCLabelBMFont!;
     
     // numbers
-    let totalBackgrounds = 3;
+    let totalBackgrounds = 4;
     
     var timeLeft:Float = 10 {
         didSet {

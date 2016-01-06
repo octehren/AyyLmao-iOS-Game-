@@ -32,7 +32,7 @@ class SharingHandler: UIViewController {
     :param: stringToPost        the `String` to post with your screenshot. See the README.md for more info.
     :param: postWithScreenshot  `true` if you want a screenshot to be appended to the post; otherwise, `false`.
     */
-    func postToTwitter(#stringToPost: String, postWithScreenshot: Bool) {
+    func postToTwitter(stringToPost: String, postWithScreenshot: Bool) {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
             
@@ -47,17 +47,17 @@ class SharingHandler: UIViewController {
             twitterViewController.completionHandler = {
                 (result:SLComposeViewControllerResult) in
                 if result == .Done {
-                    println("Sharing Handler: User posted to Twitter")
+                    print("Sharing Handler: User posted to Twitter")
                 }
                 else {
-                    println("Sharing Handler: User did not post to Twitter")
+                    print("Sharing Handler: User did not post to Twitter")
                 }
             }
             
             CCDirector.sharedDirector().presentViewController(twitterViewController, animated: true, completion: nil)
         }
         else {
-            var error = UIAlertView()
+            let error = UIAlertView()
             error.title = "No Twitter Account Available"
             error.message = "You can add a Twitter account to share from in your Settings."
             error.addButtonWithTitle("OK")
@@ -76,7 +76,7 @@ class SharingHandler: UIViewController {
     
     :param: postWithScreenshot  `true` if you want a screenshot to be appended to the post; otherwise, `false`.
     */
-    func postToFacebook(#postWithScreenshot: Bool) {
+    func postToFacebook(postWithScreenshot: Bool) {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
             
@@ -92,10 +92,10 @@ class SharingHandler: UIViewController {
             facebookViewController.completionHandler = {
                 (result:SLComposeViewControllerResult) in
                 if result == .Done {
-                    println("Sharing Handler: User posted to Facebook")
+                    print("Sharing Handler: User posted to Facebook")
                 }
                 else {
-                    println("Sharing Handler: User did not post to Facebook")
+                    print("Sharing Handler: User did not post to Facebook")
                 }
             }
             

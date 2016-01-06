@@ -81,14 +81,14 @@ class GameOver:CCNode, GKGameCenterControllerDelegate {
         if (self.soundOn == true) {
             OALSimpleAudio.sharedInstance().playEffect("ting.wav");
         }
-        SharingHandler.sharedInstance.postToFacebook(postWithScreenshot: true);
+        SharingHandler.sharedInstance.postToFacebook(true);
     }
     
     func twitter() {
         if (self.soundOn == true) {
             OALSimpleAudio.sharedInstance().playEffect("ting.wav");
         }
-        SharingHandler.sharedInstance.postToTwitter(stringToPost: "I've just ayylmao'd \(self.currentScore) times in AyyLmao. Congratulate me or I'll block you.", postWithScreenshot: true);
+        SharingHandler.sharedInstance.postToTwitter("I've just ayylmao'd \(self.currentScore) times in AyyLmao. Congratulate me or I'll block you.", postWithScreenshot: true);
     }
     
     func gameCenter() {
@@ -151,9 +151,9 @@ class GameOver:CCNode, GKGameCenterControllerDelegate {
         scoreReporter.value = Int64(self.currentBest);// = Int64(GameCenterInteractor.sharedInstance.score);
         var scoreArray: [GKScore] = [scoreReporter];
         
-        GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError!) -> Void in
+        GKScore.reportScores(scoreArray, withCompletionHandler: {(error : NSError?) -> Void in
             if error != nil {
-                println("Game Center: Score Submission Error");
+                print("Game Center: Score Submission Error");
             }
         });
     }
